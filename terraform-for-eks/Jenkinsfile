@@ -19,7 +19,7 @@ pipeline {
         stage("Deploy to Backend") {
             steps {
                 script {
-                    dir('terraform-for-eks/backend') {
+                    dir('my-app/backend') {
                         sh "aws eks update-kubeconfig --name myjenkins-server-eks-cluster --region us-west-2"
                         sh "docker build -t myapp-backend ."
                         sh "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 038675313786.dkr.ecr.us-west-2.amazonaws.com"
@@ -34,7 +34,7 @@ pipeline {
         stage("Deploy to Frontend") {
             steps {
                 script {
-                    dir('terraform-for-eks/frontend') {
+                    dir('my-app/frontend') {
                         sh "aws eks update-kubeconfig --name myjenkins-server-eks-cluster --region us-west-2"
                         sh "docker build -t myapp-frontend ."
                         sh "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 038675313786.dkr.ecr.us-west-2.amazonaws.com"
