@@ -41,7 +41,7 @@ pipeline {
                         sh "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 038675313786.dkr.ecr.us-west-2.amazonaws.com"
                         sh "aws ecr create-repository --repository-name myapp-frontend --region us-west-2"
                         sh "docker tag myapp-frontend:latest 038675313786.dkr.ecr.us-west-2.amazonaws.com/myapp-frontend:latest"
-                        sh "docker push 038675313786.dkr.ecr.us-west-2.amazonaws.com/myapp-frontendtest"
+                        sh "docker push 038675313786.dkr.ecr.us-west-2.amazonaws.com/myapp-frontend:latest"
                         sh "kubectl apply -f deployment.yaml"
                         sh "kubectl apply -f service.yaml"
                     }
