@@ -39,7 +39,7 @@ pipeline {
                         sh "aws eks update-kubeconfig --name myjenkins-server-eks-cluster --region us-west-2"
                         sh "docker build -t myapp-frontend ."
                         sh "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 038675313786.dkr.ecr.us-west-2.amazonaws.com"
-                        sh "aws ecr create-repository --repository-name myapp-frontend --region us-west-2"
+                        #sh "aws ecr create-repository --repository-name myapp-frontend --region us-west-2"
                         sh "docker tag myapp-frontend:latest 038675313786.dkr.ecr.us-west-2.amazonaws.com/myapp-frontend:latest"
                         sh "docker push 038675313786.dkr.ecr.us-west-2.amazonaws.com/myapp-frontend:latest"
                         sh "kubectl apply -f deployment.yaml"
