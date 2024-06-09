@@ -11,7 +11,7 @@ pipeline {
                 script {
                     dir('terraform-for-eks/terraform-for-cluster') {
                         sh "terraform init"
-                        sh "terraform apply -auto-approve"
+                        sh "terraform destroy -auto-approve"
                     }
                 }
             }
