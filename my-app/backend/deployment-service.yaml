@@ -34,5 +34,5 @@ spec:
     app: node-js
   ports:
   - port: 4000
-    targetPort: 4000
+    targetPort: 80
     protocol: TCP
