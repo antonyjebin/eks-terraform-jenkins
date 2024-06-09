@@ -26,6 +26,7 @@ pipeline {
                         sh "docker tag myapp-backend:latest 038675313786.dkr.ecr.us-west-2.amazonaws.com/myapp-backend:latest"
                         sh "docker push 038675313786.dkr.ecr.us-west-2.amazonaws.com/myapp-backend:latest"
                         sh "kubectl apply -f deployment-service.yaml"
+                        sh "kubectl apply -f hpa.yaml"
                     }
                 }
             }
