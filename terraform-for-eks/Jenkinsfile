@@ -21,7 +21,7 @@ pipeline {
                 script {
                     dir('my-app/backend') {
                         sh "aws eks update-kubeconfig --name myjenkins-server-eks-cluster --region us-west-2"
-                        sh "sudo docker build -t myapp-backend ."
+                        sh "docker build -t myapp-backend ."
                         sh "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 038675313786.dkr.ecr.us-west-2.amazonaws.com"
                         sh "docker tag myapp-backend:latest 038675313786.dkr.ecr.us-west-2.amazonaws.com/myapp-backend:latest"
                         sh "docker push 038675313786.dkr.ecr.us-west-2.amazonaws.com/myapp-backend:latest"
