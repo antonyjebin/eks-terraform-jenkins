@@ -29,10 +29,10 @@ kind: Service
 metadata:
   name: node-js-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: node-js
   ports:
   - port: 4000
-    targetPort: 80
+    targetPort: 4000
     protocol: TCP
