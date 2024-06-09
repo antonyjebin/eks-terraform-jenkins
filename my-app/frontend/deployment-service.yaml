@@ -29,7 +29,7 @@ kind: Service
 metadata:
   name: react-js-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: react-js
   ports:
